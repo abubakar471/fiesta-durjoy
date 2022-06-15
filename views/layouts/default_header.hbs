@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+    <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+<header class="main_header">
+        <nav class="navBar">
+        <div class="logo">
+            <img src="/images/logo.png" alt="">
+            <a href="/">fiesta</a>
+        </div>
+        <form class="searchBar" method="post" action="/search/posts">
+            <select name="category" class="header-dropdown-category" id="">
+                <option value="pigeon">Pigeon</option>
+                <option value="bird">Bird</option>
+                <option value="hen">Hen</option>
+                <option value="people">People</option>
+            </select>
+            <input type="search" name="search_post" placeholder="search">
+            <button type="submit">search</button>
+        </form>
+        <ul class="navLinks">
+            {{#if currentUser}}
+            <li><a href="/">Home</a></li>
+            <li><a href="/me">Profile</a></li>
+            <li><a href="/notifications">Notifications</a></li>
+            <li><a href="/signout">sign out</a></li>
+            {{else}}
+            <li><a href="/signup">sign up</a></li>
+            <li><a href="/signin">sign in</a></li>
+            {{/if}}
+        </ul>
+
+
+        {{!-- resp-nav-icon to display resp-nav-links --}}
+        <div class="resp-nav-links">
+            <ul>
+                {{#if currentUser}}
+                <li><a href="/"><img src="/images/home_icon1.png" alt=""></a></li>
+                <li><a href="/me"><img src="/images/profile_icon1.png" alt=""></a></li>
+                <li><a href="/notifications"><img src="/images/notification_icon.png" alt=""></a></li>
+                <li><a href="/signout"><img src="/images/logout_icon1.png" alt=""></a></li>
+                {{else}}
+                <li><a href="/signup" class="resp-sign-buttons">sign up</a></li>
+                <li><a href="/signin" class="resp-sign-buttons">sign in</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+
+    <form action="/search/posts" method="post" class="hg87f">
+        <select name="category" class="header-dropdown-category" id="">
+            <option value="pigeon">Pigeon</option>
+            <option value="bird">Bird</option>
+            <option value="hen">Hen</option>
+            <option value="people">People</option>
+        </select>
+        <input type="search" name="search_post" placeholder="search" />
+        <button type="submit">search</button>
+    </form>
+
+
+</header>
+    <script>
+        function nav() {
+            var navIcon = document.querySelector(".resp-nav-links-icon");
+
+            navIcon.addEventListener("click", () => {
+                if (document.querySelector(".resp-nav-links").style.height === "auto") {
+                    document.querySelector(".resp-nav-links").style.height === "0";
+                    document.querySelector(".resp-nav-links").style.display === "none";
+                } else {
+                    document.querySelector(".resp-nav-links").style.height === "auto"
+                    document.querySelector(".resp-nav-links").style.display === "block";
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

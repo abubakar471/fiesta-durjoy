@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+
+
+    <section class="home-posts-container">
+        <div class="home-all-posts">
+            {{#each posts}}
+            
+            <a href="/posts/{{this._id}}">
+                
+             <div class="profile-posts-card" data-aos="fade-up">
+                    {{#if postPhoto}}
+
+                    <div class="auth-profile-postPhoto" style="display: flex; ">
+
+                        <p>
+                            <img src="{{postPhoto.[0].url}}" class="auth-profile-postPhoto-image"></img>
+                        </p>
+
+
+                    </div>
+                    {{else}}
+
+                    <div class="auth-profile-postPhoto" style="display: flex; ">
+                        <p>
+                            <video controls>
+                                <source src="{{postVideo.[0].url}}" type="video/mp4">
+                            </video>
+                        </p>
+                    </div>
+
+                    {{/if}}
+
+
+                </div>
+            </a>
+
+            {{/each}}
+        </div>
+    </section>
+ 
+
+
+    {{> default_footer}}
+</body>
+
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+</html>

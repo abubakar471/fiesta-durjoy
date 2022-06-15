@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+
+    <div class="user-info-follower-view">
+        <div class="div-1">
+            <img src="/uploads/{{user.profilePhoto}}" alt="">
+            <a href="/profile/{{user._id}}">{{user.username}}</a>
+        </div>
+    </div>
+
+    <div class="follower-view-followers-container">
+        <h1>Following: </h1>
+        <hr>
+
+        {{#if user.following}}
+        {{#each user.following}}
+        <div class="follower-card">
+            <div class="div-1">
+                <img src="/uploads/{{this.profilePhoto}}" alt="">
+                <a href="/profile/{{this._id}}">{{this.username}}</p>
+            </div>
+
+
+   
+
+
+
+
+        </div>
+
+        {{/each}}
+
+        {{else}}
+        <h1>You are not follwing anyone</h1>
+        {{/if}}
+    </div>
+
+    {{> default_footer}}
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+    <div class="cover-photo">
+        <img src="{{user.coverPhoto}}" alt="">
+    </div>
+
+    <div class="profile-container">
+        <div class="user-info-first">
+            <div class="div-1">
+                <img src="{{user.profilePhoto}}" alt="">
+                <p>{{user.username}}</p>
+            </div>
+            <div class="div-2">
+                <a href="/edit-profile">Edit Profile</a>
+            </div>
+        </div>
+
+        <div class="user-info-second">
+            <h1>Business Info</h1>
+            <form action="/edit-profile/{{user._id}}" method="post" class="contacts" enctype="multipart/form-data">
+                <span>E-mail: <input type="text" value="{{user.email}}" name="email"></span>
+                <span>Username: <input type="text" value="{{user.username}}" name="username"></span>
+                <span>Phone: <input type="text" value="{{user.phone}}" name="phone"></span>
+                <span>Profession: <input type="text" value="{{user.profession}}" name="profession"></span>
+                <span>Facebook: <input type="text" value="{{user.facebook}}" name="facebook"></span>
+                <span>
+                        <p>Address : <input type="text" value="{{user.address}}" name="address"></p>
+            
+                </span>
+
+                <label for="profilePhoto"> Select
+                    a profile picture</label>
+                <input type="file" name="profilePhoto" value="profilePhoto">
+
+                <label for="coverPhoto"> Select
+                    a cover photo</label>
+                <input type="file" name="coverPhoto" value="coverPhoto">
+                <button type="submit">Update</button>
+            </form>
+        </div>
+
+    </div>
+    {{> default_footer}}
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+    <div class="add-post-container-main">
+        <div class="user-info-first">
+            <div class="div-1">
+                <img src="{{user.profilePhoto}}" alt="">
+                <p>{{user.username}}</p>
+            </div>
+        </div>
+        <h2 class="{{classList}}">{{message}}</h2>
+        <form action="/add-post/{{user._id}}" method="post" class="add-post-container" enctype="multipart/form-data">
+            <textarea name="content" placeholder="Enter your Post" required></textarea>
+            <label for="postPhoto">Select a Photo / Video <input type="file" name="postPhoto" required multiple></label>
+        
+            <label for="catagory">Select a catagory
+                <select name="category" id="">
+                    <option value="pigeon">Pigeon</option>
+                    <option value="bird">Bird</option>
+                    <option value="hen">Hen</option>
+                </select>
+            </label>
+            <label class="container">Select post type
+                <input type="radio" name="postType" value="on-sale">
+                <span>Sale</span>
+                <input type="radio" name="postType" value="on-show">
+                <span>Show</span>
+                <input type="radio" name="postType" value="coming-soon">
+                <span>coming-soon</span>
+            </label>
+
+           
+            
+            <button type="submit">Post</button>
+        </form>
+
+    </div>
+    {{> default_footer}}
+</body>
+
+</html>

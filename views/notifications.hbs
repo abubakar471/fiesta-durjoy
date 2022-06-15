@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+
+    <div class="notifications-container">
+        <div class="notifications-container-nested">
+            <h1 class="notifications-heading">Notifications</h1>
+            {{#each user.notifications}}
+
+            <a href="/profile/{{this.link._id}}">
+                <div class="notifications-card">
+                   <div class="div-1">
+                       <img src="{{this.link.profilePhoto}}" alt="">
+                   </div>
+                   <div class="div-2">
+                        <p>{{this.content}}</p>
+                   
+                       <i> {{this.createdAt}}</i>
+                   </div>
+                </div>
+            </a>
+
+            {{else}}
+            <h3 style="padding: 10px;">No Notifications</h3>
+            {{/each}}
+        </div>
+    </div>
+
+    {{> default_footer}}
+</body>
+
+</html>

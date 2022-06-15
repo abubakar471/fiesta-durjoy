@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+    <div class="home-banner">
+        <div>
+            <div class="div-1">
+                <h1>Share Your Moments</h1>
+            </div>
+            <div class="div-2">
+                <a href="">Get VIP Membership</a>
+                <a href="">Subscribe for Newsletter</a>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="home-posts-container">
+        <div class="home-all-posts">
+            {{#each posts}}
+
+            <a href="/posts/{{this._id}}">
+
+                <div class="profile-posts-card">
+                    {{#if postPhoto}}
+
+                    <div class="auth-profile-postPhoto" style="display: flex; ">
+
+                        <p>
+                            <img src="{{postPhoto.[0].url}}" class="auth-profile-postPhoto-image"></img>
+                        </p>
+
+
+                    </div>
+                    {{else}}
+
+                    <div class="auth-profile-postPhoto" style="display: flex; ">
+                        <p>
+                            <video controls>
+                                <source src="{{postVideo.[0].url}}" type="video/mp4">
+                            </video>
+                        </p>
+                    </div>
+
+                    {{/if}}
+
+
+                </div>
+            </a>
+
+            {{/each}}
+        </div>
+    </section>
+
+
+    <div class="featured-posts-see-more-div">
+        <a href=""><img src="/images/image5.png" alt=""></a>
+        <a href="/all-posts" class="featured-posts-see-more">See More</a>
+    </div>
+
+    <section class="home-middle-banner">
+        <div class="home-middle-banner-description">
+            <h1>Fiesta</h1>
+            <i>powered by abs production</i>
+            <br> <br>
+            <h2>share your <span>best moments</span> with friends</h2>
+            <br>
+            <h3>> easiest ways to share your moments</h3>
+            <h3>> find friends and other to follow</h3>
+            <h3>> stay updated with the community</h3>
+        </div>
+        <div class="div-2">
+            <a href="/">Learn More</a>
+        </div>
+    </section>
+
+
+
+
+    <section class="tech-articles-container">
+        <h1 class="tech-articles-heading">Blog Archives</h1>
+        <div class="tech-articles">
+            <a href="">
+
+                <div class="tech-articles-card">
+                    <img src="/images/image11.jpg" alt="">
+
+                    <div class="tech-articles-card-content">
+                        <h1>Web RTC to create chat apps (real time)</h1>
+                        <i>posted at 22-08-2022</i>
+                        <p>
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+
+                        </p>
+                        <a href="" class="recent-posts-see-more-btn">see more</a>
+                    </div>
+
+                </div>
+            </a>
+
+            <a href="">
+
+                <div class="tech-articles-card">
+                    <img src="/images/image12.jpg" alt="">
+
+                    <div class="tech-articles-card-content">
+                        <h1>Learn React Js</h1>
+                        <i>posted at 22-08-2022</i>
+                        <p>
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+
+                        </p>
+                        <a href="" class="recent-posts-see-more-btn">see more</a>
+                    </div>
+
+                </div>
+            </a>
+
+            <a href="">
+
+                <div class="tech-articles-card">
+                    <img src="/images/image13.jpg" alt="">
+
+                    <div class="tech-articles-card-content">
+                        <h1>Asynchronous and Reacltime App Development With Node JS </h1>
+                        <i>posted at 22-08-2022</i>
+                        <p>
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+                            ladsghag dsahg asdhgdas hsg gasdg sadgsdag sdg sdgsdag sdga dsga sgdasg sdagdas gsdgsdag
+                            dsagsdgs
+                            gdsgasdg sdga gasdg
+                            dsagds gsd gsdg sgddsgds dsgsdag gdsag dsgs agdsg dsgdsg dgsag asgs dsgs gdsag as gdsg dsag
+                            ds g
+                            sdag sg dsg ds gsdg
+
+                        </p>
+                        <a href="" class="recent-posts-see-more-btn">see more</a>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+
+    {{> default_footer}}
+</body>
+
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+</html>

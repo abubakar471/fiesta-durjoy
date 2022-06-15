@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    {{> default_header}}
+
+
+    <div class="show-post-container">
+        <div class="show-posts-postPhotos">
+            {{#if post.postPhoto}}
+            {{#each post.postPhoto}}
+            <div class="item active">
+                <img src="{{url}}" class="post-carousel-image" alt="Chicago" style="width:100%;">
+            </div>
+            {{/each}}
+            {{/if}}
+
+            {{#if post.postVideo}}
+            <div class="show-post-video">
+
+                {{#each post.postVideo}}
+                <p>
+                    <video controls>
+                        <source src="{{url}}" type="video/mp4">
+                    </video>
+                </p>
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="show-posts-content">
+            <div class="show-post-user-info-first">
+                <div class="div-1">
+                    <img src="{{post.author.profilePhoto}}" alt="">
+                    <a href="/profile/{{post.author._id}}">{{post.author.username}}</a>
+
+                    {{#if followed}}
+                    <form action="/unfollow/{{post.author._id}}/{{post._id}}" method="post">
+                        <button type="submit" class="follow-btn">Unfollow</button>
+                    </form>
+
+                    {{else}}
+                    <form action="/follow/{{post.author._id}}/{{post._id}}" method="post">
+                        <button type="submit" class="follow-btn">Follow</button>
+                    </form>
+                    {{/if}}
+
+
+                </div>
+            </div>
+
+            <div class="show-post-content-text">
+                {{#if follow_error_message}}
+                <p>{{follow_error_message}}</p>
+                {{/if}}
+
+                <p class="post-date">posted at - <span>{{post.createdAt}}</span></p>
+                <p>
+                    {{post.content}}
+                </p>
+            </div>
+
+            <hr>
+
+            {{#if like_error_message}}
+            <p style="color: {{color}};">{{like_error_message}}</p>
+            {{/if}}
+
+            <div class="like-and-dislike-container">
+                <form action="/likes/{{post._id}}" method="post" class="like-container">
+                    <button type="submit">
+                        {{#if liked}}
+                        <img src="/images/like-fill.png" class="like-btn" alt="">
+                        {{else}}
+                        <img src="/images/like-nofill.png" class="like-btn" alt="">
+                        {{/if}}
+                        <span>({{post.likes.length}})</span>
+
+                    </button>
+                </form>
+                <form action="/dislikes/{{post._id}}" method="post" class="like-container">
+                    <button type="submit">
+                        {{#if disliked}}
+                        <img src="/images/dislike-fill.png" class="like-btn" alt="">
+                        {{else}}
+                        <img src="/images/dislike-nofill.png" class="like-btn" alt="">
+                        {{/if}}
+                        <span>({{post.dislikes.length}})</span>
+
+                    </button>
+                </form>
+            </div>
+
+            <hr>
+
+            <div class="comment-section">
+                <form action="/posts/{{post._id}}/comments" method="post" class="comment-form">
+                    <input type="text" placeholder="enter your comment" name="content" required>
+                    <button type="submit">comment</button>
+                </form>
+            </div>
+
+            <div class="show-comments-container">
+                {{#if message}}
+                <p>{{message}}</p>
+                {{/if}}
+
+                {{#if post.comments}}
+                <a class="comment-show-btn" style="cursor: pointer;">All Comments ({{post.comments.length}})</a>
+                <div class="show-comments">
+                    {{#each post.comments}}
+                    <div class="comment-card">
+                        <div class="comment-user-info">
+                            <div class="div-1">
+                                <img src="{{this.author.profilePhoto}}" alt="">
+                                <a href="/profile/{{this.author._id}}">{{this.author.username}}</a>
+                            </div>
+                        </div>
+                        <div class="comment-date">
+                            {{this.createdAt}}
+                        </div>
+                        <p class="comment-content">{{this.content}}</p>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+
+    {{> default_footer}}
+
+
+    <script>
+
+
+        document.querySelector('.show-post-options-btn').addEventListener('click', () => {
+
+            if (document.querySelector('.show-post-options').style.display === 'block') {
+                document.querySelector('.show-post-options').style.display = 'none';
+            } else {
+                document.querySelector('.show-post-options').style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>

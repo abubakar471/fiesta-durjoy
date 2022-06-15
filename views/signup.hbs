@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+    <div class="auth-container">
+        <div>
+            <h1 style="text-align: center;">Sign Up For A New Account</h1>
+
+            {{#if message}}
+                <p style="color: white; font-weight: bold; margin: 5px 0"">{{message}}</p>
+            {{/if}}
+
+            <form action="/signup" class="auth-form" method="post">
+            <input type="email" name="email" placeholder="E-mail">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="phone" placeholder="Phone">
+                <input type="text" name="facebook" placeholder="Paste your facebook profile url">
+                <input type="text" name="address" placeholder="Address">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit">Sign Up</button>
+                <p><a href="/signin">📌already have an account? sign in instead</a></p>
+            </form>
+        </div>
+    </div>
+    {{> default_footer}}
+</body>
+
+</html>

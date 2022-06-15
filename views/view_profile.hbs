@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+</head>
+
+<body>
+    {{> default_header}}
+    <div class="cover-photo">
+        <img src="{{user.coverPhoto}}" alt="">
+    </div>
+
+    <div class="profile-container">
+        <div class="user-info-first">
+            <div class="div-1">
+                <img src="{{user.profilePhoto}}" alt="">
+                <p>{{user.username}}</p>
+            </div>
+
+            <div class="div-2">
+                {{#if followed}}
+                <form action="/profile/unfollow/{{user._id}}" method="post">
+                    <button type="submit" class="view-profile-follow-btn"><img src="/images/follower_icon.png" alt="">
+                        Unfollow</button>
+                </form>
+                {{else}}
+
+                <form action="/follow/{{user._id}}" method="post">
+                    <button type="submit" class="view-profile-follow-btn"><img src="/images/follower_icon.png" alt="">
+                        Follow</button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="user-info-second">
+
+            <div class="contacts">
+                <h1>Business Info</h1>
+                <span><img src="/images/email-logo.png" alt=""> E-mail: {{user.email}}</span>
+                <span><img src="/images/phone-logo.png" alt=""> Phone: {{user.phone}}</span>
+                 <span><img src="/images/profession-logo.png" alt=""> profession: {{user.profession}}</span>
+                <span><img src="/images/facebook-logo.png" alt=""> Facebook: <a
+                        href="{{user.facebook}}">{{user.facebook}}</a></span>
+                <span>
+                    <Address>
+                        <p><img src="/images/address-logo.png" alt=""> Address : {{user.address}}</p>
+                    </Address>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="followers-and-follwing-container-profile-view">
+            <div><a href="/profile/followers/{{user._id}}">Followers : </a> &nbsp; {{user.followers.length}}</div>
+            <div><a href="/profile/following/{{user._id}}">Following : </a> &nbsp; {{user.following.length}}</div>
+        </div>
+        <div class="profile-posts-header">
+            <div>
+                <h1>{{posts.length}} Posts</h1>
+            </div>
+        </div>
+        <div class="profile-posts-container">
+            {{#if posts}}
+            {{#each posts}}
+            <a href="/posts/{{_id}}">
+                <div class="profile-posts-card">
+                    {{#if postPhoto}}
+
+                    <div class="auth-profile-postPhoto" style="display: flex; ">
+
+                        <p>
+                            <img src="{{postPhoto.[0].url}}" class="auth-profile-postPhoto-image"></img>
+                        </p>
+
+
+                    </div>
+                    {{else}}
+
+                    <div class="auth-profile-postPhoto" style="display: flex; ">
+                        <p>
+                            <video controls>
+                                <source src="{{postVideo.[0].url}}" type="video/mp4">
+                            </video>
+                        </p>
+                    </div>
+
+                    {{/if}}
+
+
+
+
+
+                </div>
+            </a>
+            {{/each}}
+
+            {{else}}
+            <h1>no posts to show</h1>
+            {{/if}}
+        </div>
+
+    </div>
+    {{> default_footer}}
+</body>
+
+</html>

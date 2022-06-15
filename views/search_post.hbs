@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+        <link rel="stylesheet" href="/css/resp.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    {{> default_header}}
+
+    <div class="searched-post-container-1">
+        {{#if post_search}}
+        <div class="searched-post-container-nested">
+
+            {{#each posts}}
+            <a href="/posts/{{this._id}}">
+                <div class="searched-post-card">
+                    {{#if postPhoto}}
+
+                    <div class="postPhotoContainer">
+                        <img src="{{postPhoto.[0].url}}" alt="" class="postPhoto">
+                    </div>
+
+                    {{else}}
+
+                    <div class="postPhotoContainer">
+                        <p>
+                            <video controls class="postVideo">
+                                <source src="{{postVideo.[0].url}}" type="video/mp4">
+                            </video>
+                        </p>
+                    </div>
+
+                    {{/if}}
+
+
+                    <div class="content">
+                        <div class="user-info-26">
+                            <img src="{{this.author.profilePhoto}}" alt="">
+                            <div>
+                                <h1>{{this.author.username}}</h1>
+                            </div>
+                        </div>
+                        <i>{{this.createdAt}}</i>
+                    </div>
+                </div>
+            </a>
+            {{else}}
+            <h1>No Posts Found</h1>
+            {{/each}}
+
+        </div>
+        {{/if}}
+
+        {{#if people_search}}
+        <div class="searched-people-container-nested">
+            {{#each users}}
+
+            <a href="/profile/{{this._id}}">
+                <div class="searched-post-card">
+
+               
+                  
+                            <img src="{{this.profilePhoto}}" alt="">
+                            <div>
+                                <h1>{{this.username}}</h1>
+                                <p>
+                                    {{this.profession}}
+                                </p>
+                            </div>
+           
+                    
+                   
+                </div>
+            </a>
+
+            {{else}}
+            <h1>No People Found</h1>
+            {{/each}}
+        </div>
+        {{/if}}
+
+
+    </div>
+
+    {{> default_footer}}
+</body>
+
+</html>

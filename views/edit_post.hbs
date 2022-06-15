@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/default-style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/resp.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    {{> default_header}}
+
+
+    <div class="show-post-container">
+        <div class="show-posts-postPhotos">
+            {{#if post.postPhoto}}
+            {{#each post.postPhoto}}
+            <div class="item active">
+                <img src="{{url}}" class="post-carousel-image" alt="Chicago" style="width:100%;">
+            </div>
+            {{/each}}
+            {{/if}}
+
+             {{#if post.postVideo}}
+            <div class="show-post-video">
+
+                {{#each post.postVideo}}
+                <p>
+                    <video controls>
+                        <source src="{{url}}" type="video/mp4">
+                    </video>
+                </p>
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="show-posts-content">
+            <div class="show-post-user-info-first">
+                <div class="div-1">
+                    <img src="{{post.author.profilePhoto}}" alt="">
+                    <a href="/profile/{{post.author._id}}">{{post.author.username}}</a>
+                </div>
+            </div>
+
+            <div>
+                <form action="/posts/{{post.author._id}}/edit/{{post._id}}" method="post" class="edit-post-form">
+                    <textarea name="content" type="text" autofocus>{{post.content}}</textarea>
+                    <button type="submit">Update</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    {{> default_footer}}
+
+
+    <script>
+        document.querySelector('.show-post-options-btn').addEventListener('click', () => {
+
+            if (document.querySelector('.show-post-options').style.display === 'block') {
+                document.querySelector('.show-post-options').style.display = 'none';
+            } else {
+                document.querySelector('.show-post-options').style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>
